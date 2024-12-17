@@ -1,9 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Colors} from '../../theme/color';
-import {Star} from 'iconsax-react-native';
+import {ArrowCircleRight2, ArrowRight2, Star} from 'iconsax-react-native';
+import {useNavigation} from '@react-navigation/native';
+import {DETAIL} from '../../utils/routes';
 
 const CustomCallout = ({title, description, point}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View
@@ -24,6 +27,16 @@ const CustomCallout = ({title, description, point}) => {
       <Text style={{fontSize: 12, fontWeight: 'bold', color: Colors.GRAY}}>
         {description}
       </Text>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginVertical: 10,
+        }}>
+        <TouchableOpacity>
+          <ArrowCircleRight2 size={'32'} color={Colors.GREEN} variant="Bold" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

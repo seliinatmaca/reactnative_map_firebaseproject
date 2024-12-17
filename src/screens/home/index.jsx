@@ -7,15 +7,16 @@ import CustomCallout from '../../components/map/customCallout';
 import CustomMarker from '../../components/map/customMarker';
 import {Colors} from '../../theme/color';
 import Geolocation from '@react-native-community/geolocation';
+import {DETAIL} from '../../utils/routes';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [currentPossition, setCurrentPossition] = useState(null);
   const [mapType, setMapType] = useState('standart');
   const Markers = [
     {
       coordinate: {
-        latitude: 40.1729028,
-        longitude: 29.1242001,
+        latitude: 37.7841637,
+        longitude: -122.4306717,
       },
       title: 'selinin pilavcısı',
       description: 'türkiyenin en iyi tavuk pilavı',
@@ -23,8 +24,8 @@ const Home = () => {
     },
     {
       coordinate: {
-        latitude: 40.1741106,
-        longitude: 29.0472732,
+        latitude: 37.787128,
+        longitude: -122.4113466,
       },
       title: 'sevginin pilavcısı',
       description: 'türkiyenin en iyi tavuk pilavı',
@@ -32,8 +33,8 @@ const Home = () => {
     },
     {
       coordinate: {
-        latitude: 40.186979,
-        longitude: 29.0833341,
+        latitude: 37.7841637,
+        longitude: -122.4306717,
       },
       title: 'fahrinin pilavcısı',
       description: 'türkiyenin en iyi tavuk pilavı',
@@ -41,8 +42,8 @@ const Home = () => {
     },
     {
       coordinate: {
-        latitude: 41.0216879,
-        longitude: 28.9739438,
+        latitude: 37.7841637,
+        longitude: -122.43067178,
       },
       title: 'gülcenin pilavcısı',
       description: 'türkiyenin en iyi tavuk pilavı',
@@ -97,7 +98,7 @@ const Home = () => {
           region={{
             latitude: currentPossition?.latitude,
             longitude: currentPossition?.longitude,
-            latitudeDelta: 0.25,
+            latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}>
           {Markers.map((marker, index) => (
@@ -107,7 +108,8 @@ const Home = () => {
               description={marker.description}
               coordinate={marker.coordinate}>
               <CustomMarker />
-              <Callout>
+              <Callout
+                onPress={() => navigation.navigate(DETAIL, {item: marker})}>
                 <CustomCallout
                   title={marker.title}
                   description={marker.description}
