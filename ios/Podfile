@@ -15,10 +15,20 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# Add modular headers globally
+use_modular_headers!
+
+# Add static linkage explicitly
+use_frameworks! :linkage => :static  # Statik bağlantıyı aktif edin
+
 target 'haritanot' do
   config = use_native_modules!
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
+
+  # Add FirebaseCoreInternal and GoogleUtilities
+  pod 'FirebaseCoreInternal', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -41,4 +51,3 @@ target 'haritanot' do
     )
   end
 end
-

@@ -1,12 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from '../theme/color';
 
-export const screenStyle = StyleSheet.create({
+// define your styles
+const screenStyle = StyleSheet.create({
   safeAreView: {
     flex: 1,
+    backgroundColor: Colors.WHITE,
   },
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
+    padding: 10,
   },
 });
+
+export {screenStyle};
